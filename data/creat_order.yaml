@@ -1,0 +1,12 @@
+-
+  url: '/v2/orders'
+  data:
+    bookingType: '0'
+    cellphone: MTU4MjExMzY2NzI=
+    eventId:
+    eventTemplateId:
+    personCnt: 4
+    dktPersonId: ''
+    classId: ''
+    registerFee: 0
+    participants: []

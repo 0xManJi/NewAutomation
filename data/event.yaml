@@ -1,0 +1,20 @@
+-
+  url: '/v1/events'
+  data:
+      -
+          rangeTime: [ '2022-07-30 00:00:00', '2022-07-30 00:30:00' ]
+          startTime: '2022-07-30 00:00:00'
+          endTime: '2022-07-30 00:30:00'
+          published: false
+          availableDate: ''
+          coachId: ''
+          minRegister: 0
+          maxRegister: 10
+          description: 活动场次说明
+          address: 上海市浦东新区高行镇外高桥兰嵩路555号森兰美伦1栋1-2层
+          eventTemplateId: 1
+          latLng: { lng: 121.59473951, lat: 31.318688 }
+          lastRegistrableDate: '2022-07-30 00:25:00'
+          gps: '121.59473951,31.318688'
+          note: '1234'
+          storeId: 319

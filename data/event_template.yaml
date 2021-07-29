@@ -1,0 +1,38 @@
+-
+  url: '/v1/event_templates'
+  data:
+    classPackes: null
+    address: 上海市浦东新区高行镇外高桥兰嵩路555号森兰美伦1栋1-2层
+    allowRegisteration: '0'
+    banner: 'https://static-dev.allforsport.cn/backoffice/20210701/event-list-img_102359fhw9aytn.jfif'
+    cancelHour: 0
+    freeCancel: false
+    cover: 'https://static-dev.allforsport.cn/backoffice/20210701/event-list-img_102359fhw9aytn.jfif'
+    description: '1234'
+    duration: 30
+    level: 中阶
+    ownerId: ''
+    registerFee: ''
+    registerMax: 10
+    registerMin: 0
+    registerType: '0'
+    fuelConsumption: null
+    targetUsers:
+      - 青少年
+      - 成人
+    title: 'dev免费活动2022-07-31'
+    classType: '1'
+    eventDesctiption: '1234'
+    note: ''
+    sportName: ''
+    freeCancelTime: 0
+    pay: ''
+    profile: ''
+    showParticipants: false
+    supplements: [ ]
+    mark: ''
+    gps: '121.59473951,31.318688'
+    sportsType: 84
+    allowRegistration: 4
+    storeId: 319
+    eventDescription: '1234'

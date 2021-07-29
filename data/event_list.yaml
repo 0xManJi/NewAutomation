@@ -1,0 +1,7 @@
+-
+  url: '/v1/events/manage'
+  data:
+    eventTemplateId: 0
+    currentPage: 1
+    store_id: 319
+    sort: 5
