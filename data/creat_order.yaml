@@ -7,6 +7,6 @@
     eventTemplateId:
     personCnt: 4
     dktPersonId: ''
-    classId: ''
+    classId:
     registerFee: 0
     participants: []

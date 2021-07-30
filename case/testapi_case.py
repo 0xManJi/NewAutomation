@@ -53,6 +53,7 @@ class TestApiCase(unittest.TestCase):
         res = self.ak.do_get(url=Host, json=data, headers=self.BackEndHeader)
         eventID = self.ak.get_text(res.text, 'id')
         TestApiCase.EventId = eventID[0]
+        print("免费场次id",self.EventId)
 
     # 创建订单(报名活动)
     @file_data('../data/creat_order.yaml')

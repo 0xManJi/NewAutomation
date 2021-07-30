@@ -1,0 +1,10 @@
+-
+  url: '/v2/class-pack/ticket'
+  data:
+    cellphone: '15821136672'
+    classId:
+    name: '春贺 张'
+    dktPersonId: '15005082297'
+    count: 5
+    residue: 0
+    storeId: 319

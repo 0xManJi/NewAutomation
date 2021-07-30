@@ -1,10 +1,14 @@
 -
-  url: '/v2/class-pack/ticket'
+  url: '/v1/classPacks'
   data:
-    cellphone: '15821136672'
-    classId:
-    name: '春贺 张'
-    dktPersonId: '15005082297'
-    count: 5
-    residue: 0
-    storeId: 319
+    name: 场景课时票01
+    sportIds:
+      - { id: 90, name: 滑板 }
+    classType: 1
+    description: 开课注意事项
+    storeIds:
+      - { id: 15, name: 徐泾店 }
+      - { id: 319, name: Platform店 }
+    periodOfValidity: 6
+    howToGetDesc: 如何获得课时票
+    partnerId: 1
