@@ -25,7 +25,7 @@ class TestApiCase(unittest.TestCase):
 
     # 创建活动模板
     @file_data('../data/event_template.yaml')
-    def test_creat_event_templates(self, **kwargs):
+    def test_ww01(self, **kwargs):
         '''创建活动模板'''
         host = kwargs["url"]
         Host = self.BackEndHost + host
@@ -46,7 +46,7 @@ class TestApiCase(unittest.TestCase):
 
     # 查询发布的活动场次，报名时需用到该ID
     @file_data('../data/event_list.yaml')
-    def test_query_event_list(self, **kwargs):
+    def test_ww03(self, **kwargs):
         host = kwargs['url']
         data = kwargs['data']
         Host = self.BackEndHost + host
@@ -59,26 +59,21 @@ class TestApiCase(unittest.TestCase):
     def test_ww04(self, **kwargs):
         host = kwargs['url']
         data = kwargs['data']
-        data['eventId'] = self.EventId + 1
+        data['eventId'] = self.EventId
         data['eventTemplateId'] = self.eventTemplateId
         data = json.dumps(data)
         Host = self.UserHost + host
         res = self.ak.do_post(url=Host, data=data, headers=self.UserHeader)
         orderid = self.ak.get_text(res.text, 'orderId')
-        TestApiCase.OrderId = orderid
-
     # 取消订单
     @file_data('../data/remove_order.yaml')
     def test_ww05(self, **kwargs):
         host = kwargs['url']
         data = self.OrderId
-        Host = self.BackEndHost + host + data
+        Host = self.BackEndHost + host + str(data)
         res = self.ak.do_delete(url=Host, headers=self.BackEndHeader)
 
 
 if __name__ == '__main__':
-    test_suite = unittest.defaultTestLoader.discover('./tests', pattern='test*.py')
-    result = BeautifulReport(test_suite)
-    result.report(filename='测试报告.html', description='测试deafult报告', report_dir='../report', theme='theme_default')
-
+    unittest.main
 

@@ -1,0 +1,7 @@
+-
+  url: '/v2/class-pack'
+  data:
+    current: 1
+    partnerId: 1
+    storeId: 319
+    params:
