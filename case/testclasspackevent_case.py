@@ -1,0 +1,143 @@
+# -*- coding: utf-8 -*-
+# @Author  : Joy
+# @FileName: testclasspackevent_case.py
+from api_keyword.api_key import ApiKey
+from api_keyword.get_config import config as conf
+import json, time
+import unittest
+from ddt import ddt, file_data
+from BeautifulReport import BeautifulReport as bf
+from pprint import pprint
+
+
+@ddt
+class TestClassPackEvent(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        self.ak = ApiKey()
+        self.BackEndHost = conf.BackEndHost
+        self.BackEndHeader = {
+            "content-type": "application/json",
+            "token": conf.BackEndToken}
+        self.UserHost = conf.UserHost
+        self.UserHeader = {
+            "content-type": "application/json",
+            "Authorization": conf.UserToken}
+        self.ClassPackId = None
+        self.eventTemplateId = None
+        self.EventId = None
+        self.OrderId = None
+
+    # 创建课时票
+    @file_data('../data/add_classpack.yaml')
+    def test_cp01(self, **kwargs):
+        pprint("--------创建课时票--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        data['name'] = conf.Name + "场景课时票" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        Host = self.BackEndHost + host
+        '''创建课时票，后续为用户分配'''
+        res = self.ak.do_post(url=Host, headers=self.BackEndHeader, json=data)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['success'], True)
+
+    # 查询课时票ID，后续使用该ID
+    @file_data('../data/query_classpack_list.yaml')
+    def test_cp02(self, **kwargs):
+        pprint("--------查询课时票列表，获取ID--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        Host = self.BackEndHost + host
+        '''查询课时票列表，取最新的课时票的ID'''
+        res = self.ak.do_get(url=Host, headers=self.BackEndHeader, params=data)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        classpackid = self.ak.get_text(res.text, "id")
+        TestClassPackEvent.ClassPackId = classpackid[0]
+        self.assertEqual(res.json()['success'], True)
+
+    # 为指定用户分配课时票
+    @file_data('../data/distribution_classpack.yaml')
+    def test_cp03(self, **kwargs):
+        pprint("--------将该课时票分配给用户--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        Host = self.BackEndHost + host
+        data['classId'] = self.ClassPackId
+        res = self.ak.do_post(url=Host, json=data, headers=self.BackEndHeader)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['success'], True)
+
+    # 创建该课时票活动
+    @file_data('../data/event_template.yaml')
+    def test_cp04(self, **kwargs):
+        pprint("--------创建该课时票类型的活动模板--------")
+        listID = []
+        listID.append(self.ClassPackId)
+        host = kwargs["url"]
+        Host = self.BackEndHost + host
+        data = kwargs["data"]
+        data['title'] = conf.Name + "课时票活动" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        data['classPackes'] = listID
+        data['registerType'] = 2
+        res = self.ak.do_post(url=Host, json=data, headers=self.BackEndHeader)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        eventTemplateId = self.ak.get_text(res.text, "id")
+        TestClassPackEvent.eventTemplateId = eventTemplateId
+        self.assertEqual(res.json()['success'], True)
+
+    # 发布课时票活动场次
+    @file_data('../data/event.yaml')
+    def test_cp05(self, **kwargs):
+        pprint("--------发布课时票活动场次--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        Host = self.BackEndHost + host
+        data[0]['eventTemplateId'] = self.eventTemplateId
+        res = self.ak.do_post(url=Host, json=data, headers=self.BackEndHeader)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['success'], True)
+
+    # 查询课时票场次ID
+    @file_data('../data/event_list.yaml')
+    def test_cp06(self, **kwargs):
+        pprint("--------查询活动场次列表，获取活动场次ID--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        Host = self.BackEndHost + host
+        res = self.ak.do_get(url=Host, json=data, headers=self.BackEndHeader)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        eventID = self.ak.get_text(res.text, 'id')
+        TestClassPackEvent.EventId = eventID[0]
+        self.assertEqual(res.json()['success'], True)
+
+    # 创建订单(报名活动)
+    @file_data('../data/creat_order.yaml')
+    def test_cp07(self, **kwargs):
+        pprint("--------报名该课时票活动--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        data['eventId'] = self.EventId
+        data['eventTemplateId'] = self.eventTemplateId
+        data['classId'] = self.ClassPackId
+        data = json.dumps(data)
+        Host = self.UserHost + host
+        res = self.ak.do_post(url=Host, data=data, headers=self.UserHeader)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        orderid = self.ak.get_text(res.text, 'orderId')
+        TestClassPackEvent.OrderId = orderid
+        self.assertEqual(res.json()['success'], True)
+
+    # 取消订单
+    @file_data('../data/remove_order.yaml')
+    def test_cp08(self, **kwargs):
+        pprint("--------取消课时票报名订单--------")
+        host = kwargs['url']
+        data = self.OrderId
+        Host = self.BackEndHost + host + str(data)
+        res = self.ak.do_delete(url=Host, headers=self.BackEndHeader)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['success'], True)
+
+
+if __name__ == '__main__':
+    unittest.main

@@ -37,6 +37,7 @@ class TestApiCase(unittest.TestCase):
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         eventTemplateId = self.ak.get_text(res.text, "id")
         TestApiCase.eventTemplateId = eventTemplateId
+        self.assertEqual(res.json()['success'], True)
 
     # 发布活动场次
     @file_data('../data/event.yaml')
@@ -48,6 +49,7 @@ class TestApiCase(unittest.TestCase):
         data[0]['eventTemplateId'] = self.eventTemplateId
         res = self.ak.do_post(url=Host, json=data, headers=self.BackEndHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['success'], True)
 
     # 查询发布的活动场次，报名时需用到该ID
     @file_data('../data/event_list.yaml')
@@ -60,6 +62,7 @@ class TestApiCase(unittest.TestCase):
         eventID = self.ak.get_text(res.text, 'id')
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         TestApiCase.EventId = eventID[0]
+        self.assertEqual(res.json()['success'], True)
 
     # 创建订单(报名活动)
     @file_data('../data/creat_order.yaml')
@@ -75,6 +78,8 @@ class TestApiCase(unittest.TestCase):
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         orderid = self.ak.get_text(res.text, 'orderId')
         TestApiCase.OrderId = orderid
+        self.assertEqual(res.json()['success'], True)
+
     # 取消订单
     @file_data('../data/remove_order.yaml')
     def test_ww05(self, **kwargs):
@@ -84,6 +89,7 @@ class TestApiCase(unittest.TestCase):
         Host = self.BackEndHost + host + str(data)
         res = self.ak.do_delete(url=Host, headers=self.BackEndHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['success'], True)
 
 
 if __name__ == '__main__':

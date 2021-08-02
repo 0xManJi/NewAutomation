@@ -1,0 +1,8 @@
+-
+  url: 'https://api-eu.preprod.subsidia.org/membership/energy_point/api/v2/platform_transactions'
+  data:
+    card_number: '2091088580216'
+    point_change: 400
+    event_id:
+    expire_time: '2022-12-31'
+    profile: Poslog
