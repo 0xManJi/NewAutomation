@@ -7,10 +7,12 @@ import requests
 
 headers = {
     "content-type": "application/json",
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2Mjc2MjEyMzUzNTksImlkIjozNTZ9.6Bv8OJ73TnftF1thQ08RdV_YqL7jZPNP9nqNDRCaiGY"
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2Mjc3MTIyMTg1MjUsImlkIjozNTZ9.GOKOz7YYw0j-tc4AyXcPCWHJp8SeZAIRolUAffl8zs4"
 }
 
 '''取消活动场次'''
+
+
 def remove_events():
     host = "https://api-dev.backoffice.allforsport.cn/v2/events/"
     for i in range(1323, 1500):
@@ -22,7 +24,6 @@ def remove_events():
         }
         url = host + str(i)
         res = requests.delete(url=url, json=body, headers=headers)
-
         print(res.json())
 
 
@@ -31,7 +32,7 @@ def remove_events():
 
 def remove_template():
     templateurl = "https://api-dev.backoffice.allforsport.cn/v1/event_templates/on_shelf/931?isOnShelf=false"
-    for i in range(932, 1071):
+    for i in range(1071, 1121):
         url = "https://api-dev.backoffice.allforsport.cn/v1/event_templates/on_shelf/{}?isOnShelf=false".format(i)
         body = {
             "isOnShelf": "false"
@@ -40,4 +41,5 @@ def remove_template():
         print(res.json())
 
 
-remove_template()
+if __name__ == '__main__':
+    remove_template()
