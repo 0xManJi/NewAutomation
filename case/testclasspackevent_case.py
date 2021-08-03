@@ -29,7 +29,7 @@ class TestClassPackEvent(unittest.TestCase):
         self.OrderId = None
 
     # 创建课时票
-    @file_data('../data/add_classpack.yaml')
+    @file_data('../data/add_classticket.yaml')
     def test_cp01(self, **kwargs):
         pprint("--------创建课时票--------")
         host = kwargs['url']
@@ -42,7 +42,7 @@ class TestClassPackEvent(unittest.TestCase):
         self.assertEqual(res.json()['success'], True)
 
     # 查询课时票ID，后续使用该ID
-    @file_data('../data/query_classpack_list.yaml')
+    @file_data('../data/query_classticket_list.yaml')
     def test_cp02(self, **kwargs):
         pprint("--------查询课时票列表，获取ID--------")
         host = kwargs['url']
@@ -56,7 +56,7 @@ class TestClassPackEvent(unittest.TestCase):
         self.assertEqual(res.json()['success'], True)
 
     # 为指定用户分配课时票
-    @file_data('../data/distribution_classpack.yaml')
+    @file_data('../data/distribution_classticket.yaml')
     def test_cp03(self, **kwargs):
         pprint("--------将该课时票分配给用户--------")
         host = kwargs['url']
