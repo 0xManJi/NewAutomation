@@ -8,7 +8,7 @@ from pprint import pprint
 
 
 @ddt
-class TestApiCase(unittest.TestCase):
+class TestFreeEvent(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
@@ -36,7 +36,7 @@ class TestApiCase(unittest.TestCase):
         res = self.ak.do_post(url=Host, json=data, headers=self.BackEndHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         eventTemplateId = self.ak.get_text(res.text, "id")
-        TestApiCase.eventTemplateId = eventTemplateId
+        TestFreeEvent.eventTemplateId = eventTemplateId
         self.assertEqual(res.json()['success'], True)
 
     # 发布活动场次
@@ -61,7 +61,7 @@ class TestApiCase(unittest.TestCase):
         res = self.ak.do_get(url=Host, json=data, headers=self.BackEndHeader)
         eventID = self.ak.get_text(res.text, 'id')
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
-        TestApiCase.EventId = eventID[0]
+        TestFreeEvent.EventId = eventID[0]
         self.assertEqual(res.json()['success'], True)
 
     # 创建订单(报名活动)
@@ -77,7 +77,7 @@ class TestApiCase(unittest.TestCase):
         res = self.ak.do_post(url=Host, data=data, headers=self.UserHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         orderid = self.ak.get_text(res.text, 'orderId')
-        TestApiCase.OrderId = orderid
+        TestFreeEvent.OrderId = orderid
         self.assertEqual(res.json()['success'], True)
 
     # 取消订单
