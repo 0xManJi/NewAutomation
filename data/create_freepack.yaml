@@ -1,0 +1,15 @@
+-
+  url: "/v1/ticket-package"
+  data:
+    name:
+    type: 0
+    unlimited: true
+    storeIds:
+      - 319
+      - 292
+    description: '创建课时包'
+    refundFeeRate: 0
+    tickets:
+      - { classPackId: , ticketCount: 6, presentCount: '0', amount: '' }
+    totalAmount: 0
+    enable: true

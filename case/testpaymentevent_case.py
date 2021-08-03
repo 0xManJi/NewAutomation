@@ -38,7 +38,7 @@ class TestPaymentEvent(unittest.TestCase):
 
     @file_data("../data/event_template.yaml")
     # 创建支付活动模板
-    def test_pm02(self, **kwargs):
+    def test_pm01(self, **kwargs):
         pprint("--------创建支付类型的活动模板--------")
         host = kwargs["url"]
         Host = self.BackEndHost + host
@@ -54,7 +54,7 @@ class TestPaymentEvent(unittest.TestCase):
 
     # 发布支付活动场次
     @file_data('../data/event.yaml')
-    def test_pm03(self, **kwargs):
+    def test_pm02(self, **kwargs):
         pprint("--------发布支付活动场次--------")
         host = kwargs['url']
         data = kwargs['data']
@@ -66,7 +66,7 @@ class TestPaymentEvent(unittest.TestCase):
 
     # 查询支付活动场次ID
     @file_data('../data/event_list.yaml')
-    def test_pm04(self, **kwargs):
+    def test_pm03(self, **kwargs):
         pprint("--------查询活动场次列表，获取活动场次ID--------")
         host = kwargs['url']
         data = kwargs['data']
@@ -79,13 +79,14 @@ class TestPaymentEvent(unittest.TestCase):
 
     # 创建订单(报名支付活动)
     @file_data('../data/creat_order.yaml')
-    def test_pm05(self, **kwargs):
+    def test_pm04(self, **kwargs):
         pprint("--------报名该支付活动--------")
         host = kwargs['url']
         data = kwargs['data']
         data['eventId'] = self.EventId
         data['eventTemplateId'] = self.eventTemplateId
         data['registerFee'] = 0.02
+        data['bookingType'] = 3
         data = json.dumps(data)
         Host = self.UserHost + host
         res = self.ak.do_post(url=Host, data=data, headers=self.UserHeader)
@@ -96,7 +97,7 @@ class TestPaymentEvent(unittest.TestCase):
 
     # 取消订单
     @file_data('../data/remove_order.yaml')
-    def test_pm06(self, **kwargs):
+    def test_pm05(self, **kwargs):
         pprint("--------取消支付报名订单--------")
         host = kwargs['url']
         data = self.OrderId
@@ -107,7 +108,7 @@ class TestPaymentEvent(unittest.TestCase):
 
     # 取消活动场次
     @file_data('../data/remove_event.yaml')
-    def test_pm07(self, **kwargs):
+    def test_pm06(self, **kwargs):
         pprint("--------取消该支付活动场次--------")
         host = kwargs['url']
         data = kwargs['data']
@@ -119,7 +120,7 @@ class TestPaymentEvent(unittest.TestCase):
 
     # 下架活动模板
     @file_data('../data/remove_template.yaml')
-    def test_pm08(self, **kwargs):
+    def test_pm07(self, **kwargs):
         pprint("--------下架该支付活动模板--------")
         host = kwargs['url']
         data = kwargs['data']

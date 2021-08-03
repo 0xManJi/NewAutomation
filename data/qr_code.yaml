@@ -1,0 +1,5 @@
+-
+  url: '/v1/ticket-package/qr-code'
+  data:
+    packageId:
+    storeId: 319
