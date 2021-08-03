@@ -35,10 +35,12 @@ class TestBurningEvent(unittest.TestCase):
     # 为用户分配燃值
     @file_data("../data/add_burning.yaml")
     def test_bn01(self, **kwargs):
+        pprint("--------为用户分配燃值--------")
         Host = kwargs['url']
         data = kwargs['data']
         data['event_id'] = get_random()
         res = self.ak.do_post(url=Host, json=data, headers=self.BnHeader)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         self.assertEqual(res.json()['message'], "Data created successful.")
 
     @file_data("../data/event_template.yaml")

@@ -1,7 +1,7 @@
 import os
 
-
-class Config(object):  # 默认配置
+'''默认配置'''
+class Config(object):
     DEBUG = False
 
     def __getitem__(self, key):
@@ -26,6 +26,6 @@ mapping = {
     'dev': DevelopmentConfig,
     'pp': PreProductionConfig
 }
-# 一键切换环境
+# 切换环境
 APP_ENV = os.environ.get('APP_ENV', 'dev').lower()
 config = mapping[APP_ENV]()  # 获取指定的环境
