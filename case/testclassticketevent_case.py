@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Author  : Joy
-# @FileName: testclasspackevent_case.py
+# @FileName: testclassticketevent_case.py
 from api_keyword.api_key import ApiKey
 from api_keyword.get_config import config as conf
 import json, time
@@ -11,7 +11,7 @@ from pprint import pprint
 
 
 @ddt
-class TestClassPackEvent(unittest.TestCase):
+class TestClassTicketEvent(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         self.ak = ApiKey()
@@ -52,7 +52,7 @@ class TestClassPackEvent(unittest.TestCase):
         res = self.ak.do_get(url=Host, headers=self.BackEndHeader, params=data)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         classpackid = self.ak.get_text(res.text, "id")
-        TestClassPackEvent.ClassPackId = classpackid[0]
+        TestClassTicketEvent.ClassPackId = classpackid[0]
         self.assertEqual(res.json()['success'], True)
 
     # 为指定用户分配课时票
@@ -82,7 +82,7 @@ class TestClassPackEvent(unittest.TestCase):
         res = self.ak.do_post(url=Host, json=data, headers=self.BackEndHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         eventTemplateId = self.ak.get_text(res.text, "id")
-        TestClassPackEvent.eventTemplateId = eventTemplateId
+        TestClassTicketEvent.eventTemplateId = eventTemplateId
         self.assertEqual(res.json()['success'], True)
 
     # 发布课时票活动场次
@@ -107,7 +107,7 @@ class TestClassPackEvent(unittest.TestCase):
         res = self.ak.do_get(url=Host, json=data, headers=self.BackEndHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         eventID = self.ak.get_text(res.text, 'id')
-        TestClassPackEvent.EventId = eventID[0]
+        TestClassTicketEvent.EventId = eventID[0]
         self.assertEqual(res.json()['success'], True)
 
     # 创建订单(报名活动)
@@ -124,7 +124,7 @@ class TestClassPackEvent(unittest.TestCase):
         res = self.ak.do_post(url=Host, data=data, headers=self.UserHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         orderid = self.ak.get_text(res.text, 'orderId')
-        TestClassPackEvent.OrderId = orderid
+        TestClassTicketEvent.OrderId = orderid
         self.assertEqual(res.json()['success'], True)
 
     # 取消订单

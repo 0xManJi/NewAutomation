@@ -11,7 +11,7 @@ from pprint import pprint
 
 
 @ddt
-class TestClassPackEvent(unittest.TestCase):
+class TestClassPack(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         self.ak = ApiKey()
@@ -51,7 +51,7 @@ class TestClassPackEvent(unittest.TestCase):
         res = self.ak.do_get(url=Host, headers=self.BackEndHeader, params=data)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         classticketid = self.ak.get_text(res.text, "id")
-        TestClassPackEvent.ClassTicketId = classticketid[0]
+        TestClassPack.ClassTicketId = classticketid[0]
         self.assertEqual(res.json()['success'], True)
 
     # 创建免费课时包
@@ -65,7 +65,7 @@ class TestClassPackEvent(unittest.TestCase):
         Host = self.BackEndHost + host
         res = self.ak.do_post(url=Host, headers=self.BackEndHeader, json=data)
         packageId = self.ak.get_text(res.text, 'id')
-        TestClassPackEvent.PackageId = packageId
+        TestClassPack.PackageId = packageId
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         self.assertEqual(res.json()['success'], True)
 
@@ -80,7 +80,7 @@ class TestClassPackEvent(unittest.TestCase):
         res = self.ak.do_post(url=Host,data=data,headers=self.UserHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         orderid = self.ak.get_text(res.text,"orderNumber")
-        TestClassPackEvent.PackOrder = orderid
+        TestClassPack.PackOrder = orderid
         self.assertEqual(res.json()['success'], True)
 
     #退回课时包
