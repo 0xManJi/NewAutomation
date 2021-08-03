@@ -1,0 +1,5 @@
+-
+  url: "/v1/ticket-package/"
+  data:
+    storeId:
+    phoneNumber: 15821136672

@@ -21,13 +21,11 @@ class TestClassPackEvent(unittest.TestCase):
             "token": conf.BackEndToken}
         self.UserHost = conf.UserHost
         self.UserHeader = {
-            "content-type": "application/json",
+            "content-type": "application/x-www-form-urlencoded",
             "Authorization": conf.UserToken}
         self.ClassTicketId = None
-        self.eventTemplateId = None
-        self.EventId = None
-        self.OrderId = None
         self.PackageId = None
+        self.PackOrder = None
 
     # 创建课时票
     @file_data('../data/add_classticket.yaml')
@@ -59,6 +57,7 @@ class TestClassPackEvent(unittest.TestCase):
     # 创建免费课时包
     @file_data('../data/create_freepack.yaml')
     def test_fp03(self, **kwargs):
+        pprint("--------创建免费课时包--------")
         host = kwargs['url']
         data = kwargs['data']
         data['name'] = conf.Name + "免费课时包" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -67,20 +66,36 @@ class TestClassPackEvent(unittest.TestCase):
         res = self.ak.do_post(url=Host, headers=self.BackEndHeader, json=data)
         packageId = self.ak.get_text(res.text, 'id')
         TestClassPackEvent.PackageId = packageId
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         self.assertEqual(res.json()['success'], True)
 
-    # # 查询QR_code,获取领取参数
-    # @file_data('../data/qr_code.yaml')
-    # def test_fp04(self,**kwargs):
-    #     host = kwargs['url']
-    #     data = kwargs['data']
-    #     data['packageId'] = self.PackageId
-    #     Host = self.BackEndHost + host
-    #     res = self.ak.do_post(url=Host,headers=self.BackEndHeader,json=data)
-    #     adminid = self.ak.get_text(res.text,'adminId')
-    #     generateCode = self.ak.get_text(res.text,'generateCode')
-    #     storeId = self.ak.get_text(res.text,'storeId')
-    #     packageId = self.ak.get_text(res.text,'packageId')
+    #领取课时包
+    @file_data('../data/receive_freepack.yaml')
+    def test_fp04(self,**kwargs):
+        pprint("--------领取免费课时包--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        data['storeId'] = 319
+        Host = self.UserHost + host + str(self.PackageId)
+        res = self.ak.do_post(url=Host,data=data,headers=self.UserHeader)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        orderid = self.ak.get_text(res.text,"orderNumber")
+        TestClassPackEvent.PackOrder = orderid
+        self.assertEqual(res.json()['success'], True)
+
+    #退回课时包
+    @file_data("../data/return_freepack.yaml")
+    def test_fp05(self,**kwargs):
+        pprint("--------退回课时包--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        Host = self.BackEndHost + host + str(self.PackOrder)
+        res = self.ak.do_delete(url=Host,json=data,headers=self.BackEndHeader)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['success'], True)
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
