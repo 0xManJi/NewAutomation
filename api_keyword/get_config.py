@@ -13,7 +13,7 @@ class DevelopmentConfig(Config):
     BackEndHost = "https://api-dev.backoffice.allforsport.cn"
     BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgwNDI4NDI3NDUsImlkIjozNTZ9.qiixmNEKhO_yTMgVviMnch3dhQl_szbShC_rH3PmxTA"
     UserHost = "https://api-dev.wx.allforsport.cn"
-    UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA1NjY5NzczODYsImlkIjo1OTl9.BGVbvWh_wPMvqI2hY01ixdiyGcnUeyVwej8MKTiOLmk"
+    UserToken = "authorization	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA1NzE5MTE4MzgsImlkIjo1OTl9.WJ_ptHbwqjuKg-CtqVXrS15A4l5-JLGBe1L257L1Sa0"
 
 
 class PreProductionConfig(object):
