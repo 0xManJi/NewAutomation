@@ -119,6 +119,7 @@ class TestClassTicketEvent(unittest.TestCase):
         data['eventId'] = self.EventId
         data['eventTemplateId'] = self.eventTemplateId
         data['classId'] = self.ClassPackId
+        data['bookingType'] = 2
         data = json.dumps(data)
         Host = self.UserHost + host
         res = self.ak.do_post(url=Host, data=data, headers=self.UserHeader)

@@ -1,7 +1,7 @@
 -
   url: '/v2/orders'
   data:
-    bookingType: '0'
+    bookingType: 0
     cellphone: MTU4MjExMzY2NzI=
     eventId:
     eventTemplateId:

@@ -93,6 +93,7 @@ class TestBurningEvent(unittest.TestCase):
         data['eventId'] = self.EventId
         data['eventTemplateId'] = self.eventTemplateId
         data['registerFee'] = 100
+        data["bookingType"] = 1
         data = json.dumps(data)
         Host = self.UserHost + host
         res = self.ak.do_post(url=Host, data=data, headers=self.UserHeader)
