@@ -1,0 +1,7 @@
+-
+  url: '/v2/events/'
+  data:
+    description: "取消活动场次"
+    id:
+    megSendParticipants: ""
+    reasonType: 1

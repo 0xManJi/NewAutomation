@@ -15,7 +15,7 @@ headers = {
 
 def remove_events():
     host = "https://api-dev.backoffice.allforsport.cn/v2/events/"
-    for i in range(1451, 1499):
+    for i in range(1500, 1506):
         body = {
             "description": "1234",
             "id": i,
@@ -32,7 +32,7 @@ def remove_events():
 
 def remove_template():
     templateurl = "https://api-dev.backoffice.allforsport.cn/v1/event_templates/on_shelf/931?isOnShelf=false"
-    for i in range(1140, 1189):
+    for i in range(1189, 1199):
         url = "https://api-dev.backoffice.allforsport.cn/v1/event_templates/on_shelf/{}?isOnShelf=false".format(i)
         body = {
             "isOnShelf": "false"

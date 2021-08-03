@@ -1,0 +1,4 @@
+-
+  url: '/v1/event_templates/on_shelf/'
+  data:
+    isOnShelf: false

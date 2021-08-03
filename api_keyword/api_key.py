@@ -14,6 +14,9 @@ class ApiKey:
     def do_delete(self, url, data=None, **kwargs):
         return requests.delete(url=url, data=data, **kwargs)
 
+    def do_put(self, url, data=None, **kwargs):
+        return requests.put(url=url, data=data, **kwargs)
+
     def get_text(self, res, key):
         if res is not None:
             try:

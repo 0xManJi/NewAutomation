@@ -110,7 +110,29 @@ class TestBurningEvent(unittest.TestCase):
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         self.assertEqual(res.json()['success'], True)
 
+    # 取消活动场次
+    @file_data('../data/remove_event.yaml')
+    def test_bn07(self, **kwargs):
+        pprint("--------取消该燃值活动场次--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        data['id'] = self.EventId
+        Host = self.BackEndHost + host + str(self.EventId)
+        res = self.ak.do_delete(url=Host, headers=self.BackEndHeader, json=data)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['success'], True)
+
+    # 下架活动模板
+    @file_data('../data/remove_template.yaml')
+    def test_bn08(self, **kwargs):
+        pprint("--------下架该燃值活动模板--------")
+        host = kwargs['url']
+        data = kwargs['data']
+        Host = self.BackEndHost + host + str(self.eventTemplateId) + "?isOnShelf=false"
+        res = self.ak.do_put(url=Host, headers=self.BackEndHeader, json=data)
+        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['success'], True)
+
 
 if __name__ == '__main__':
     unittest.main()
-
