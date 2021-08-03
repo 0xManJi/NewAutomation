@@ -6,5 +6,5 @@ if __name__ == '__main__':
     filepath = os.path.join(localpath,'Report')
     test_suite = unittest.defaultTestLoader.discover('case', pattern='test*.py')
     result = BeautifulReport(test_suite)
-    result.report(filename='booking场景测试报告', description='booking场景自动化报告',log_path=filepath)
+    result.report(filename='测试报告', description='booking场景自动化报告',log_path=filepath)
 
