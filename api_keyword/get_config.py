@@ -17,8 +17,11 @@ class DevelopmentConfig(Config):
 
 
 class PreProductionConfig(object):
-    Host = "https://api-pp.backoffice.allforsport.cn"
-    Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyMTM1NjMwMjAsImlkIjozMTd9.sDWF_VBGnJvpgua_zhGTTCm4HbQoHdMCLf9kfbimutk"
+    Name = 'pp'
+    BackEndHost = "https://api-pp.backoffice.allforsport.cn"
+    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyMTM1NjMwMjAsImlkIjozMTd9.sDWF_VBGnJvpgua_zhGTTCm4HbQoHdMCLf9kfbimutk"
+    UserHost = "https://api-pp.wx.allforsport.cn"
+    UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA3MjU2MDc4OTcsImlkIjozOTZ9.vLt2WMjUzdrCTJuADurwSedJtB2CVGumI6aoY1Td1eM"
 
 
 # 环境映射关系
@@ -27,5 +30,5 @@ mapping = {
     'pp': PreProductionConfig
 }
 # 切换环境
-APP_ENV = os.environ.get('APP_ENV', 'dev').lower()
+APP_ENV = os.environ.get('APP_ENV', 'pp').lower()
 config = mapping[APP_ENV]()  # 获取指定的环境

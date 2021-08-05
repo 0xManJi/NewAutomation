@@ -20,7 +20,7 @@
     targetUsers:
       - 青少年
       - 成人
-    title: 'dev免费活动2022-07-31'
+    title:
     classType: '1'
     eventDesctiption: '1234'
     note: ''
@@ -32,7 +32,7 @@
     supplements: [ ]
     mark: ''
     gps: '121.59473951,31.318688'
-    sportsType: 84
+    sportsType: 89
     allowRegistration: 4
-    storeId: 319
+    storeId: 187
     eventDescription: '1234'

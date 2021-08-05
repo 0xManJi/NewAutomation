@@ -8,7 +8,7 @@
     description: 开课注意事项
     storeIds:
       - { id: 15, name: 徐泾店 }
-      - { id: 319, name: Platform店 }
+      - { id: 187, name: Platform店 }
     periodOfValidity: 6
     howToGetDesc: 如何获得课时票
     partnerId: 1

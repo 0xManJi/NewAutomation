@@ -5,7 +5,7 @@
     type: 0
     unlimited: true
     storeIds:
-      - 319
+      - 187
       - 292
     description: '创建课时包'
     refundFeeRate: 0

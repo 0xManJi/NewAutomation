@@ -75,7 +75,7 @@ class TestClassPack(unittest.TestCase):
         pprint("--------领取免费课时包--------")
         host = kwargs['url']
         data = kwargs['data']
-        data['storeId'] = 319
+        data['storeId'] = 187
         Host = self.UserHost + host + str(self.PackageId)
         res = self.ak.do_post(url=Host,data=data,headers=self.UserHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
