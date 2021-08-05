@@ -11,7 +11,7 @@ class Config(object):
 class DevelopmentConfig(Config):
     Name = 'dev'
     BackEndHost = "https://api-dev.backoffice.allforsport.cn"
-    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyMTM0OTg1MDIsImlkIjozNTZ9.H8_l-_XNReh--2RuC4saH8wLgRn-y7PILp0e6C76-xg"
+    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyMTU5NTI3NzMsImlkIjozNTZ9.aoiT5i78Dd8G_oVqvfhT23wkY6u6Njf44QJr8r03JGg"
     UserHost = "https://api-dev.wx.allforsport.cn"
     UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA1NzE5MTE4MzgsImlkIjo1OTl9.WJ_ptHbwqjuKg-CtqVXrS15A4l5-JLGBe1L257L1Sa0"
 
