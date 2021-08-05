@@ -8,7 +8,7 @@ import json, time
 import unittest
 from ddt import ddt, file_data
 from BeautifulReport import BeautifulReport as bf
-from pprint import pprint
+
 
 
 @ddt
