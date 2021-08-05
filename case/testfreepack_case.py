@@ -7,7 +7,7 @@ import json, time
 import unittest
 from ddt import ddt, file_data
 from BeautifulReport import BeautifulReport as bf
-from pprint import pprint
+from print import print
 
 
 @ddt
@@ -30,26 +30,26 @@ class TestClassPack(unittest.TestCase):
     # 创建课时票
     @file_data('../data/add_classticket.yaml')
     def test_fp01(self, **kwargs):
-        pprint("--------创建课时票--------")
+        print("--------创建课时票--------")
         host = kwargs['url']
         data = kwargs['data']
         data['name'] = conf.Name + "免费课时包用票" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         Host = self.BackEndHost + host
         '''创建课时票，后续为用户分配'''
         res = self.ak.do_post(url=Host, headers=self.BackEndHeader, json=data)
-        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         self.assertEqual(res.json()['success'], True)
 
     # 查询课时票ID，后续使用该ID
     @file_data('../data/query_classticket_list.yaml')
     def test_fp02(self, **kwargs):
-        pprint("--------查询课时票列表，获取ID--------")
+        print("--------查询课时票列表，获取ID--------")
         host = kwargs['url']
         data = kwargs['data']
         Host = self.BackEndHost + host
         '''查询课时票列表，取最新的课时票的ID'''
         res = self.ak.do_get(url=Host, headers=self.BackEndHeader, params=data)
-        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         classticketid = self.ak.get_text(res.text, "id")
         TestClassPack.ClassTicketId = classticketid[0]
         self.assertEqual(res.json()['success'], True)
@@ -57,7 +57,7 @@ class TestClassPack(unittest.TestCase):
     # 创建免费课时包
     @file_data('../data/create_freepack.yaml')
     def test_fp03(self, **kwargs):
-        pprint("--------创建免费课时包--------")
+        print("--------创建免费课时包--------")
         host = kwargs['url']
         data = kwargs['data']
         data['name'] = conf.Name + "免费课时包" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -66,19 +66,19 @@ class TestClassPack(unittest.TestCase):
         res = self.ak.do_post(url=Host, headers=self.BackEndHeader, json=data)
         packageId = self.ak.get_text(res.text, 'id')
         TestClassPack.PackageId = packageId
-        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         self.assertEqual(res.json()['success'], True)
 
     #领取课时包
     @file_data('../data/receive_freepack.yaml')
     def test_fp04(self,**kwargs):
-        pprint("--------领取免费课时包--------")
+        print("--------领取免费课时包--------")
         host = kwargs['url']
         data = kwargs['data']
         data['storeId'] = 187
         Host = self.UserHost + host + str(self.PackageId)
         res = self.ak.do_post(url=Host,data=data,headers=self.UserHeader)
-        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         orderid = self.ak.get_text(res.text,"orderNumber")
         TestClassPack.PackOrder = orderid
         self.assertEqual(res.json()['success'], True)
@@ -86,12 +86,12 @@ class TestClassPack(unittest.TestCase):
     #退回课时包
     @file_data("../data/return_freepack.yaml")
     def test_fp05(self,**kwargs):
-        pprint("--------退回课时包--------")
+        print("--------退回课时包--------")
         host = kwargs['url']
         data = kwargs['data']
         Host = self.BackEndHost + host + str(self.PackOrder)
         res = self.ak.do_delete(url=Host,json=data,headers=self.BackEndHeader)
-        pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         self.assertEqual(res.json()['success'], True)
 
 
