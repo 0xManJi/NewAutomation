@@ -21,7 +21,7 @@ class PreProductionConfig(object):
     BackEndHost = "https://api-pp.backoffice.allforsport.cn"
     BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyMTM1NjMwMjAsImlkIjozMTd9.sDWF_VBGnJvpgua_zhGTTCm4HbQoHdMCLf9kfbimutk"
     UserHost = "https://api-pp.wx.allforsport.cn"
-    UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA3MjU2MDc4OTcsImlkIjozOTZ9.vLt2WMjUzdrCTJuADurwSedJtB2CVGumI6aoY1Td1eM"
+    UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA3NDA1NDI5NDYsImlkIjozOTZ9.XoA9FqMlxCGuWZWU5QurpTVfLOmnub4gWJyjfK_a1wY"
 
 
 # 环境映射关系
@@ -29,6 +29,10 @@ mapping = {
     'dev': DevelopmentConfig,
     'pp': PreProductionConfig
 }
+#切换环境
+# APP_ENV = os.environ.get('APP_ENV', 'dev').lower()
+# config = mapping[APP_ENV]()  # 获取指定的环境
+
 
 num = len(sys.argv)-1
 if num<1 or num >1:
@@ -37,6 +41,3 @@ env = sys.argv[1]
 
 APP_ENV=os.environ.get("APP_ENV",env).lower()
 config=mapping[APP_ENV]()
-
-if __name__ == '__main__':
-    print(config.HOST)

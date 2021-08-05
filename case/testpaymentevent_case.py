@@ -27,9 +27,6 @@ class TestPaymentEvent(unittest.TestCase):
         self.UserHeader = {
             "content-type": "application/json",
             "Authorization": conf.UserToken}
-        self.BnHeader = {"content-type": "application/json",
-                         "x-api-key": "6ec18e29-7c10-40ae-9dbe-3db8c908dfbf",
-                         }
         self.ClassPackId = None
         self.eventTemplateId = None
         self.EventId = None
@@ -85,7 +82,7 @@ class TestPaymentEvent(unittest.TestCase):
         data['eventId'] = self.EventId
         data['eventTemplateId'] = self.eventTemplateId
         data['registerFee'] = 0.02
-        data['bookingType'] = 3
+        data['bookingType'] = "3"
         Host = self.UserHost + host
         res = self.ak.do_post(url=Host, json=data, headers=self.UserHeader)
         pprint("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
