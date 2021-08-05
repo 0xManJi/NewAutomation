@@ -30,5 +30,5 @@ mapping = {
     'pp': PreProductionConfig
 }
 # 切换环境
-APP_ENV = os.environ.get('APP_ENV', 'pp').lower()
+APP_ENV = os.environ.get('APP_ENV', 'dev').lower()
 config = mapping[APP_ENV]()  # 获取指定的环境

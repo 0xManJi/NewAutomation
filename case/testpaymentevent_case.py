@@ -35,7 +35,6 @@ class TestPaymentEvent(unittest.TestCase):
         self.EventId = None
         self.OrderId = None
 
-
     @file_data("../data/event_template.yaml")
     # 创建支付活动模板
     def test_pm01(self, **kwargs):
