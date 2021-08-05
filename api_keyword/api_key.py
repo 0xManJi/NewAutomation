@@ -12,10 +12,10 @@ class ApiKey:
         return requests.post(url=url, data=data, timeout=20,**kwargs)
 
     def do_delete(self, url, data=None, **kwargs):
-        return requests.delete(url=url, data=data, timeout=5,**kwargs)
+        return requests.delete(url=url, data=data, timeout=20,**kwargs)
 
     def do_put(self, url, data=None, **kwargs):
-        return requests.put(url=url, data=data, timeout=5,**kwargs)
+        return requests.put(url=url, data=data, timeout=20,**kwargs)
 
     def get_text(self, res, key):
         if res is not None:
