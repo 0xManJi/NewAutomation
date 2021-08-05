@@ -6,10 +6,10 @@ class ApiKey:
     '''封装常用的接口函数'''
 
     def do_get(self, url, params=None, **kwargs):
-        return requests.get(url=url, params=params, timeout=15,**kwargs)
+        return requests.get(url=url, params=params, timeout=20,**kwargs)
 
     def do_post(self, url, data=None, **kwargs):
-        return requests.post(url=url, data=data, timeout=15,**kwargs)
+        return requests.post(url=url, data=data, timeout=20,**kwargs)
 
     def do_delete(self, url, data=None, **kwargs):
         return requests.delete(url=url, data=data, timeout=5,**kwargs)
