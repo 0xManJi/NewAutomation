@@ -6,7 +6,7 @@
     eventId:
     eventTemplateId:
     personCnt: 4
-    dktPersonId:
-    classId:
+    dktPersonId: ""
+    classId: ""
     registerFee:
     participants: []
