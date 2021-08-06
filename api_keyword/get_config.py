@@ -30,14 +30,14 @@ mapping = {
     'pp': PreProductionConfig
 }
 #切换环境
-APP_ENV = os.environ.get('APP_ENV', 'pp').lower()
-config = mapping[APP_ENV]()  # 获取指定的环境
+# APP_ENV = os.environ.get('APP_ENV', 'pp').lower()
+# config = mapping[APP_ENV]()  # 获取指定的环境
 
 
-# num = len(sys.argv)-1
-# if num<1 or num >1:
-#      exit("参数错误,必须传环境变量!比如: python xx.py dev|pp")
-# env = sys.argv[1]
-#
-# APP_ENV=os.environ.get("APP_ENV",env).lower()
-# config=mapping[APP_ENV]()
+num = len(sys.argv)-1
+if num<1 or num >1:
+     exit("参数错误,必须传环境变量!比如: python xx.py dev|pp")
+env = sys.argv[1]
+
+APP_ENV=os.environ.get("APP_ENV",env).lower()
+config=mapping[APP_ENV]()
