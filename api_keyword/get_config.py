@@ -21,7 +21,7 @@ class PreProductionConfig(object):
     BackEndHost = "https://api-pp.backoffice.allforsport.cn"
     BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgzMDI5ODQ5OTUsImlkIjozMTd9.VhzIYTdPqjqyx9PouUMg-zj0Y5W2lJubXoK0KnqRyUo"
     UserHost = "https://api-pp.wx.allforsport.cn"
-    UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyMzQyNzI5NDYsImlkIjozMTd9.AgAdQHHmHW3pzy6M6Zn9tUaFg8Sp1v_LSFxYfZdBwn0"
+    UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA4MDg2ODk5ODgsImlkIjozOTZ9.MBBFAnUTnA_rzNjHlArXLqVU6EjJte-8Gtoa223bkTA"
 
 
 # 环境映射关系
@@ -30,14 +30,14 @@ mapping = {
     'pp': PreProductionConfig
 }
 #切换环境
-# APP_ENV = os.environ.get('APP_ENV', 'dev').lower()
-# config = mapping[APP_ENV]()  # 获取指定的环境
+APP_ENV = os.environ.get('APP_ENV', 'pp').lower()
+config = mapping[APP_ENV]()  # 获取指定的环境
 
 
-num = len(sys.argv)-1
-if num<1 or num >1:
-     exit("参数错误,必须传环境变量!比如: python xx.py dev|pp")
-env = sys.argv[1]
-
-APP_ENV=os.environ.get("APP_ENV",env).lower()
-config=mapping[APP_ENV]()
+# num = len(sys.argv)-1
+# if num<1 or num >1:
+#      exit("参数错误,必须传环境变量!比如: python xx.py dev|pp")
+# env = sys.argv[1]
+#
+# APP_ENV=os.environ.get("APP_ENV",env).lower()
+# config=mapping[APP_ENV]()
