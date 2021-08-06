@@ -11,7 +11,7 @@ class Config(object):
 class DevelopmentConfig(Config):
     Name = 'dev'
     BackEndHost = "https://api-dev.backoffice.allforsport.cn"
-    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyMTU5NTI3NzMsImlkIjozNTZ9.aoiT5i78Dd8G_oVqvfhT23wkY6u6Njf44QJr8r03JGg"
+    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyNDMwODgwNTQsImlkIjo2MzV9.I8IKArWr3wMzG2Mw-Pa9r8_2VfYCc_PRItlvV7TaDOQ"
     UserHost = "https://api-dev.wx.allforsport.cn"
     UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA1NzE5MTE4MzgsImlkIjo1OTl9.WJ_ptHbwqjuKg-CtqVXrS15A4l5-JLGBe1L257L1Sa0"
 
@@ -19,9 +19,9 @@ class DevelopmentConfig(Config):
 class PreProductionConfig(object):
     Name = 'pp'
     BackEndHost = "https://api-pp.backoffice.allforsport.cn"
-    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyMTM1NjMwMjAsImlkIjozMTd9.sDWF_VBGnJvpgua_zhGTTCm4HbQoHdMCLf9kfbimutk"
+    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyNDMzNzQ5ODUsImlkIjozNTZ9.QxL5qI4KvXQuj3Lp8T4PZ-71JGBrmFGKpjlZLcwg1JM"
     UserHost = "https://api-pp.wx.allforsport.cn"
-    UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA3NDA1NDI5NDYsImlkIjozOTZ9.XoA9FqMlxCGuWZWU5QurpTVfLOmnub4gWJyjfK_a1wY"
+    UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgyMzQyNzI5NDYsImlkIjozMTd9.AgAdQHHmHW3pzy6M6Zn9tUaFg8Sp1v_LSFxYfZdBwn0"
 
 
 # 环境映射关系
