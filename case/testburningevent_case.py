@@ -32,20 +32,22 @@ class TestBurningEvent(unittest.TestCase):
         self.EventId = None
         self.OrderId = None
 
-    # # 为用户分配燃值
-    # @file_data("../data/add_burning.yaml")
-    # def test_bn01(self, **kwargs):
-    #     print("--------为用户分配燃值--------")
-    #     Host = kwargs['url']
-    #     data = kwargs['data']
-    #     data['event_id'] = get_random()
-    #     res = self.ak.do_post(url=Host, json=data, headers=self.BnHeader)
-    #     print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
-    #     self.assertEqual(res.json()['message'], "Data created successful.")
+    # 为用户分配燃值
+    @file_data("../data/add_burning.yaml")
+    def test_bn01(self, **kwargs):
+        '''为用户分配燃值'''
+        print("--------为用户分配燃值--------")
+        Host = kwargs['url']
+        data = kwargs['data']
+        data['event_id'] = get_random()
+        res = self.ak.do_post(url=Host, json=data, headers=self.BnHeader)
+        print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
+        self.assertEqual(res.json()['message'], "Data created successful.")
 
-    @file_data("../data/event_template.yaml")
     # 创建燃值活动模板
+    @file_data("../data/event_template.yaml")
     def test_bn02(self, **kwargs):
+        '''创建燃值类型活动模板'''
         print("--------创建燃值类型的活动模板--------")
         host = kwargs["url"]
         Host = self.BackEndHost + host
@@ -62,6 +64,7 @@ class TestBurningEvent(unittest.TestCase):
     # 发布燃值活动场次
     @file_data('../data/event.yaml')
     def test_bn03(self, **kwargs):
+        '''发布燃值活动场次'''
         print("--------发布燃值活动场次--------")
         host = kwargs['url']
         data = kwargs['data']
@@ -74,6 +77,7 @@ class TestBurningEvent(unittest.TestCase):
     # 查询燃值活动场次ID
     @file_data('../data/event_list.yaml')
     def test_bn04(self, **kwargs):
+        '''获取指定的场次ID'''
         print("--------查询活动场次列表，获取活动场次ID--------")
         host = kwargs['url']
         data = kwargs['data']
@@ -87,6 +91,7 @@ class TestBurningEvent(unittest.TestCase):
     # 创建订单(报名燃值活动)
     @file_data('../data/creat_order.yaml')
     def test_bn05(self, **kwargs):
+        '''报名该燃值活动'''
         print("--------报名该燃值活动--------")
         host = kwargs['url']
         data = kwargs['data']
@@ -105,6 +110,7 @@ class TestBurningEvent(unittest.TestCase):
     # 取消订单
     @file_data('../data/remove_order.yaml')
     def test_bn06(self, **kwargs):
+        '''取消燃值订单'''
         print("--------取消燃值报名订单--------")
         host = kwargs['url']
         data = self.OrderId
@@ -116,6 +122,7 @@ class TestBurningEvent(unittest.TestCase):
     # 取消活动场次
     @file_data('../data/remove_event.yaml')
     def test_bn07(self, **kwargs):
+        '''取消活动场次'''
         print("--------取消该燃值活动场次--------")
         host = kwargs['url']
         data = kwargs['data']
@@ -128,6 +135,7 @@ class TestBurningEvent(unittest.TestCase):
     # 下架活动模板
     @file_data('../data/remove_template.yaml')
     def test_bn08(self, **kwargs):
+        '''下架燃值活动模板'''
         print("--------下架该燃值活动模板--------")
         host = kwargs['url']
         data = kwargs['data']
