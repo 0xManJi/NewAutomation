@@ -35,7 +35,7 @@ class TestBurningEvent(unittest.TestCase):
     # 为用户分配燃值
     @file_data("../data/add_burning.yaml")
     def test_bn01(self, **kwargs):
-        '''为用户分配燃值'''
+        "为用户分配燃值"
         print("--------为用户分配燃值--------")
         Host = kwargs['url']
         data = kwargs['data']
