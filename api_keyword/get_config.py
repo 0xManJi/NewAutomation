@@ -19,7 +19,7 @@ class DevelopmentConfig(Config):
 class PreProductionConfig(object):
     Name = 'pp'
     BackEndHost = "https://api-pp.backoffice.allforsport.cn"
-    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MjgzMDI5ODQ5OTUsImlkIjozMTd9.VhzIYTdPqjqyx9PouUMg-zj0Y5W2lJubXoK0KnqRyUo"
+    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2Mjg1NjYwNTI5NTQsImlkIjozMTd9.R5PlX2UW9jQBZDHAxyELPiPWR9vW7MRznaBVNj6MB94"
     UserHost = "https://api-pp.wx.allforsport.cn"
     UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA4MDg2ODk5ODgsImlkIjozOTZ9.MBBFAnUTnA_rzNjHlArXLqVU6EjJte-8Gtoa223bkTA"
 
