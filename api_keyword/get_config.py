@@ -1,5 +1,6 @@
 import os
 import sys
+from api_keyword.get_token import dev_login,pp_login
 '''默认配置'''
 class Config(object):
     DEBUG = False
@@ -11,7 +12,7 @@ class Config(object):
 class DevelopmentConfig(Config):
     Name = 'dev'
     BackEndHost = "https://api-dev.backoffice.allforsport.cn"
-    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2Mjg2NDk1MzI1MDIsImlkIjozNTZ9.0FpEREDnDNGcbjwHAoQUHH1uCptTIYPqoVgzWEFwXtg"
+    BackEndToken = dev_login()
     UserHost = "https://api-dev.wx.allforsport.cn"
     UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA1NzE5MTE4MzgsImlkIjo1OTl9.WJ_ptHbwqjuKg-CtqVXrS15A4l5-JLGBe1L257L1Sa0"
 
@@ -19,7 +20,7 @@ class DevelopmentConfig(Config):
 class PreProductionConfig(object):
     Name = 'pp'
     BackEndHost = "https://api-pp.backoffice.allforsport.cn"
-    BackEndToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2Mjg1NjYwNTI5NTQsImlkIjozMTd9.R5PlX2UW9jQBZDHAxyELPiPWR9vW7MRznaBVNj6MB94"
+    BackEndToken = pp_login()
     UserHost = "https://api-pp.wx.allforsport.cn"
     UserToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE2MzA4MDg2ODk5ODgsImlkIjozOTZ9.MBBFAnUTnA_rzNjHlArXLqVU6EjJte-8Gtoa223bkTA"
 
