@@ -85,8 +85,10 @@ class TestBurningEvent(unittest.TestCase):
         res = self.ak.do_get(url=Host, json=data, headers=self.BackEndHeader)
         print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         eventIDs = self.ak.get_text(res.text, 'id')
-        print(eventIDs)
-        TestBurningEvent.EventId = eventIDs[0]
+        if isinstance(eventIDs,int):
+            TestBurningEvent.EventId = eventIDs
+        else:
+            TestBurningEvent.EventId = eventIDs[0]
         self.assertEqual(res.json()['success'], True)
 
     # 创建订单(报名燃值活动)
