@@ -9,7 +9,6 @@ from ddt import ddt, file_data
 from BeautifulReport import BeautifulReport as bf
 
 
-
 @ddt
 class TestClassTicketEvent(unittest.TestCase):
     @classmethod
@@ -39,7 +38,7 @@ class TestClassTicketEvent(unittest.TestCase):
         '''创建课时票，后续为用户分配'''
         res = self.ak.do_post(url=Host, headers=self.BackEndHeader, json=data)
         print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
-        self.assertEqual(res.json()['success'], True)
+        self.assertEqual(res.json()['success'], False)
 
     # 查询课时票ID，后续使用该ID
     @file_data('../data/query_classticket_list.yaml')
@@ -138,6 +137,7 @@ class TestClassTicketEvent(unittest.TestCase):
         res = self.ak.do_delete(url=Host, headers=self.BackEndHeader)
         print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         self.assertEqual(res.json()['success'], True)
+
     # 取消活动场次
     @file_data('../data/remove_event.yaml')
     def test_cp09(self, **kwargs):
@@ -160,6 +160,7 @@ class TestClassTicketEvent(unittest.TestCase):
         res = self.ak.do_put(url=Host, headers=self.BackEndHeader, json=data)
         print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
         self.assertEqual(res.json()['success'], True)
+
 
 if __name__ == '__main__':
     unittest.main

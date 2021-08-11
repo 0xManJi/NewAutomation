@@ -17,6 +17,7 @@ class ApiKey:
     def do_put(self, url, data=None, **kwargs):
         return requests.put(url=url, data=data, timeout=20,**kwargs)
 
+    '''取出res的指定键的值'''
     def get_text(self, res, key):
         if res is not None:
             try:
