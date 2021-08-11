@@ -38,7 +38,7 @@ class TestClassTicketEvent(unittest.TestCase):
         '''创建课时票，后续为用户分配'''
         res = self.ak.do_post(url=Host, headers=self.BackEndHeader, json=data)
         print("请求地址：{Url}，请求参数：{data},响应结果：{res}".format(Url=Host, data=data, res=res.json()))
-        self.assertEqual(res.json()['success'], False)
+        self.assertEqual(res.json()['success'], True)
 
     # 查询课时票ID，后续使用该ID
     @file_data('../data/query_classticket_list.yaml')
